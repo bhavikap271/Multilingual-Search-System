@@ -1,0 +1,174 @@
+---
+name: search
+url: /search
+controller: SearchController
+---
+<div class="grid-frame">
+  <div zf-panel position="left" id="sidebar" class="medium-grid-block collapse medium-3 large-3 vertical">
+    <div class="grid-content collapse shrink hide-for-medium">
+      <a href="" class="secondary button expand" zf-close>Close</a>
+    </div>
+    <div class="grid-content collapse shrink">
+      <ul class="primary condense menu-bar">
+        <li><a><strong>Sportify</strong></a></li>
+      </ul>
+    </div>
+    <div class="vertical grid-block">
+        <h7 class="list-header">header</h7>
+        <div class="grid-block" style="height: 15vh;">
+          <div class="grid-content">
+          <section class="block-list scrollable">
+            <ul scrollable>
+              <li class="with-chevron"><a href="#">List item 1</a></li>
+              <li class="with-chevron"><a href="#">List item 2</a></li>
+              <li><a href="#">List item 3</a></li>
+              <li class="with-chevron"><a href="#">List item 1</a></li>
+              <li class="with-chevron"><a href="#">List item 2</a></li>
+              <li><a href="#">List item 3</a></li>
+              <li class="with-chevron"><a href="#">List item 1</a></li>
+              <li class="with-chevron"><a href="#">List item 2</a></li>
+            </ul>
+          </section>
+          </div>
+        </div>
+        <h7 class="list-header">header</h7>
+        <div class="grid-block" style="height: 15vh;">
+          <div class="grid-content">
+          <section class="block-list">
+            <ul scrollable>
+              <li class="with-chevron"><a href="#">List item 1</a></li>
+              <li class="with-chevron"><a href="#">List item 2</a></li>
+              <li><a href="#">List item 3</a></li>
+              <li class="with-chevron"><a href="#">List item 1</a></li>
+              <li class="with-chevron"><a href="#">List item 2</a></li>
+              <li><a href="#">List item 3</a></li>
+              <li class="with-chevron"><a href="#">List item 1</a></li>
+              <li class="with-chevron"><a href="#">List item 2</a></li>
+            </ul>
+          </section>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="grid-block collapse medium-9 large-9 vertical">
+    <div id="header" class="shrink collapse grid-content">
+      <ul class="menu-bar primary">
+        <li class="hide-for-medium small"><a zf-open="sidebar" href="#"><img zf-iconic="" icon="comment-square" size="small" class="settings iconic-color-primary"></a></li>
+        <li class="medium-10">
+          <input class="search-bar" placeholder="  Search">
+        </li>
+        <li class="small-1">
+          <a href="#">
+            <img zf-iconic="" icon="magnifying-glass" size="small" class="settings iconic-color-primary">
+          </a>
+        </li>
+        <li class="small-1" zf-open="info">
+          <a href="#">
+            <img zf-iconic="" icon="cog" size="small" class="settings iconic-color-primary">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="tweets" class="grid-block scroll-section">
+
+      <div class="small-12 medium-5 large-5 grid-content overflow-hidden">
+        <div class="card">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+      </div>
+      <div class="small-12 medium-5 large-5 grid-content overflow-hidden">
+        <div class="card">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+      </div>
+      <div class="small-12 medium-5 large-5 grid-content overflow-hidden">
+        <div class="card">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div zf-panel position="right" id="info" class="collapse medium-3 large-3 vertical">
+    <a href="" class="close-button" zf-close>x</a>
+    <div class="grid-content message-side-bar">
+      <section class="block-list">
+        <header>In This Room</header>
+        <ul>
+          <li><a href="#">Cady Heron</a></li>
+          <li><a href="#">Kevin Gnapoor</a></li>
+          <li><a href="#">Trang Pak</a></li>
+          <li><a href="#">Coach Carr</a></li>
+          <li><a href="#">Regina George</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+
+
+
