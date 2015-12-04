@@ -2,7 +2,6 @@
  * Created by naved on 20/11/15.
  */
 var main =  angular.module('application');
-var left = 0;
 
 main.controller('LoginController',['$rootScope','$scope','localStorageService','peer',function($rootScope,$scope,localStorageService,peer){
   if(typeof(peer) === "string"){
@@ -44,17 +43,7 @@ main.controller('LoginController',['$rootScope','$scope','localStorageService','
 main.controller('SearchController',['$rootScope','$scope','$http',function($rootScope,$scope,$http){
   var tweets = $("#tweets");
   tweets.mousewheel(function(event){
-
-      left = left - event.deltaY * 30
-      var a  = tweets.width();
-      var b = tweets.outerWidth();
-      if (left > tweets.width()){
-        left = 0;
-        return;
-      }
-      $("#tweets").scrollLeft(left);
+      tweets[0].scrollLeft -= (event.deltaY * 30);
       event.preventDefault();
   });
-
-
 }]);
