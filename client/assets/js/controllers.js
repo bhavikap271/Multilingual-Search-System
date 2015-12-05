@@ -46,4 +46,9 @@ main.controller('SearchController',['$rootScope','$scope','$http',function($root
       tweets[0].scrollLeft -= (event.deltaY * 30);
       event.preventDefault();
   });
+
+  $scope.flipCard = function(){
+    $("#card1").flip();
+  }
+
 }]);

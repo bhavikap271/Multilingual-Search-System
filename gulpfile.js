@@ -47,7 +47,8 @@ var paths = {
     'bower_components/angular-qrcode/angular-qrcode.js',
     'bower_components/jquery-mousewheel/jquery.mousewheel.js',
     'bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.js',
-    'bower_components/angular-nanoscroller/scrollable.js'
+    'bower_components/angular-nanoscroller/scrollable.js',
+    'bower_components/flip/dist/jquery.flip.js'
   ],
   // These files are for your app's JavaScript
   appJS: [

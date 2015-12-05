@@ -30,14 +30,8 @@ controller: SearchController
           <div class="grid-content">
           <section class="block-list">
             <ul scrollable>
-              <li class="checkbox"><a href="#">List item 1</a></li>
-              <li class="checkbox"><a href="#">List item 2</a></li>
-              <li><a href="#">List item 3</a></li>
-              <li class="checkbox"><a href="#">List item 1</a></li>
-              <li class="checkbox"><a href="#">List item 2</a></li>
-              <li><a href="#">List item 3</a></li>
-              <li class="checkbox"><a href="#">List item 1</a></li>
-              <li class="checkbox"><a href="#">List item 2</a></li>
+              <li><input id="life1" type="checkbox"> <label for="life1">List item 1</label></li>
+              <li><input id= "abc1" type="checkbox"> <label for="abc1">List item 2</label></li>
             </ul>
           </section>
           </div>
@@ -67,49 +61,32 @@ controller: SearchController
     <div id="tweets" class="grid-block scroll-section">
 
       <div class="small-5 medium-5 large-5 grid-content overflow-hidden">
-        <div class="card">
-          <div class="card-divider">
-            Card Title
+        <div id="card1" class="card slideLeft" ng-click="flipCard()">
+          <div class="front">
+            <div class="card-divider">
+              Card Title
+            </div>
+            <div class="card-section">
+              <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+            </div>
           </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-divider">
-            Card Title
-          </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          <div class="back">
           </div>
         </div>
-        <div class="card">
-          <div class="card-divider">
-            Card Title
+
+        <div id="card2" class="card slideLeft" ng-click="flipCard()">
+          <div class="front">
+            <div class="card-divider">
+              Card Title
+            </div>
+            <div class="card-section">
+              <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+            </div>
           </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-          </div>
-        </div>
-      </div>
-      <div class="small-12 medium-5 large-5 grid-content overflow-hidden">
-        <div class="card">
-          <div class="card-divider">
-            Card Title
-          </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          <div class="back">
           </div>
         </div>
-        <div class="card">
-          <div class="card-divider">
-            Card Title
-          </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-          </div>
-        </div>
-        <div class="card">
+        <div class="card slideLeft">
           <div class="card-divider">
             Card Title
           </div>
@@ -119,7 +96,7 @@ controller: SearchController
         </div>
       </div>
       <div class="small-12 medium-5 large-5 grid-content overflow-hidden">
-        <div class="card">
+        <div class="card slideLeft">
           <div class="card-divider">
             Card Title
           </div>
@@ -127,7 +104,7 @@ controller: SearchController
             <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card slideLeft">
           <div class="card-divider">
             Card Title
           </div>
@@ -135,7 +112,33 @@ controller: SearchController
             <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
           </div>
         </div>
-        <div class="card">
+        <div class="card slideLeft">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+      </div>
+      <div class="small-12 medium-5 large-5 grid-content overflow-hidden">
+        <div class="card slideLeft">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+        <div class="card slideLeft">
+          <div class="card-divider">
+            Card Title
+          </div>
+          <div class="card-section">
+            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+          </div>
+        </div>
+        <div class="card slideLeft">
           <div class="card-divider">
             Card Title
           </div>
