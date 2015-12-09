@@ -1,1 +1,1 @@
-var foundationRoutes = [{"name":"search","url":"/search","controller":"SearchController","path":"templates/search.html"},{"name":"home","url":"/home","controller":"LoginController","path":"templates/home.html"}]; 
+var foundationRoutes = [{"name":"search","url":"/search?query","controller":"SearchController","animationIn":"zoomIn","path":"templates/search.html"},{"name":"home","url":"/home","controller":"LoginController","animationOut":"zoomOut","path":"templates/home.html"}]; 

@@ -1,7 +1,8 @@
 ---
 name: search
-url: /search
+url: /search?query
 controller: SearchController
+animationIn: zoomIn
 ---
 <div class="grid-frame">
   <div zf-panel position="left" id="sidebar" class="medium-grid-block collapse medium-3 large-3 vertical">
@@ -14,24 +15,21 @@ controller: SearchController
       </ul>
     </div>
     <div class="vertical grid-block">
-        <h7 class="list-header">header</h7>
+        <h7 class="list-header">Categories</h7>
         <div class="grid-block" style="height: 15vh; overflow-y: hidden;">
           <div class="grid-content">
           <section class="block-list scrollable">
             <ul scrollable="">
-              <li><input id="life" type="checkbox"> <label for="life">List item 1</label></li>
-              <li><input id= "abc" type="checkbox"> <label for="abc">List item 2</label></li>
+              <li ng-repeat="cat in categories"><input id="{{cat}}" ng-click="filter(cat);" type="checkbox"> <label for="{{cat}}">{{cat}}</label></li>
             </ul>
           </section>
           </div>
         </div>
-        <h7 class="list-header">header</h7>
+        <h7 class="list-header">HashTags</h7>
         <div class="grid-block" style="height: 15vh; overflow-y: hidden;">
           <div class="grid-content">
           <section class="block-list">
             <ul scrollable>
-              <li><input id="life1" type="checkbox"> <label for="life1">List item 1</label></li>
-              <li><input id= "abc1" type="checkbox"> <label for="abc1">List item 2</label></li>
             </ul>
           </section>
           </div>
@@ -44,10 +42,10 @@ controller: SearchController
       <ul class="menu-bar primary">
         <li class="hide-for-medium small"><a zf-open="sidebar" href="#"><img zf-iconic="" icon="comment-square" size="small" class="settings iconic-color-primary"></a></li>
         <li class="medium-10">
-          <input class="search-bar" placeholder="  Search">
+          <form ng-submit="search()"><input class="search-bar" ng-model="searchInput" placeholder="Search"></form>
         </li>
         <li class="small-1">
-          <a href="#">
+          <a ng-click="search()">
             <img zf-iconic="" icon="magnifying-glass" size="small" class="settings iconic-color-primary">
           </a>
         </li>
@@ -60,90 +58,15 @@ controller: SearchController
     </div>
     <div id="tweets" class="grid-block scroll-section">
 
-      <div class="small-5 medium-5 large-5 grid-content overflow-hidden">
-        <div id="card1" class="card slideLeft" ng-click="flipCard()">
-          <div class="front">
-            <div class="card-divider">
-              Card Title
-            </div>
-            <div class="card-section">
-              <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-            </div>
-          </div>
-          <div class="back">
-          </div>
-        </div>
-
-        <div id="card2" class="card slideLeft" ng-click="flipCard()">
-          <div class="front">
-            <div class="card-divider">
-              Card Title
-            </div>
-            <div class="card-section">
-              <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-            </div>
-          </div>
-          <div class="back">
-          </div>
-        </div>
-        <div class="card slideLeft">
-          <div class="card-divider">
-            Card Title
+      <div class="small-6 medium-6 large-6 grid-content overflow-hidden" ng-repeat="document in documents">
+        <div class="card slideLeft" ng-click="show(doc)" ng-repeat="doc in document">
+          <div class="card-divider tweet_header">
+            {{doc.user_name}}
           </div>
           <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-          </div>
-        </div>
-      </div>
-      <div class="small-12 medium-5 large-5 grid-content overflow-hidden">
-        <div class="card slideLeft">
-          <div class="card-divider">
-            Card Title
-          </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-          </div>
-        </div>
-        <div class="card slideLeft">
-          <div class="card-divider">
-            Card Title
-          </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-          </div>
-        </div>
-        <div class="card slideLeft">
-          <div class="card-divider">
-            Card Title
-          </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-          </div>
-        </div>
-      </div>
-      <div class="small-12 medium-5 large-5 grid-content overflow-hidden">
-        <div class="card slideLeft">
-          <div class="card-divider">
-            Card Title
-          </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-          </div>
-        </div>
-        <div class="card slideLeft">
-          <div class="card-divider">
-            Card Title
-          </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
-          </div>
-        </div>
-        <div class="card slideLeft">
-          <div class="card-divider">
-            Card Title
-          </div>
-          <div class="card-section">
-            <p>You know how hard it is to distill your experiences and accomplishments into a meaningful one-page resume. So what if we told you to cram th</p>
+            <p ng-show="doc.lang=='en'" ng-bind-html="doc.text_en | linky"></p>
+            <p ng-show="doc.lang=='de'" ng-bind-html="doc.text_de | linky"></p>
+            <p ng-show="doc.lang=='es'" ng-bind-html="doc.text_es | linky"></p>
           </div>
         </div>
       </div>
@@ -151,19 +74,7 @@ controller: SearchController
   </div>
 
   <div zf-panel position="right" id="info" class="collapse medium-3 large-3 vertical">
-    <a href="" class="close-button" zf-close>x</a>
-    <div class="grid-content message-side-bar">
-      <section class="block-list">
-        <header>In This Room</header>
-        <ul>
-          <li><a href="#">Cady Heron</a></li>
-          <li><a href="#">Kevin Gnapoor</a></li>
-          <li><a href="#">Trang Pak</a></li>
-          <li><a href="#">Coach Carr</a></li>
-          <li><a href="#">Regina George</a></li>
-        </ul>
-      </section>
-    </div>
+    <a href="" class="close-button" zf-close>×</a>
   </div>
 </div>
 

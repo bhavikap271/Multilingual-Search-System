@@ -48,7 +48,9 @@ var paths = {
     'bower_components/jquery-mousewheel/jquery.mousewheel.js',
     'bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.js',
     'bower_components/angular-nanoscroller/scrollable.js',
-    'bower_components/flip/dist/jquery.flip.js'
+    'bower_components/angular-sanitize/angular-sanitize.js',
+    'bower_components/angular-emoji-popup/emoji.min.js',
+    'bower_components/angular-embedly/angular-embedly.js'
   ],
   // These files are for your app's JavaScript
   appJS: [

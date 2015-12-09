@@ -1551,7 +1551,7 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
 */
 .card {
   border: 1px solid #ededed;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   background: #fff;
   color: #000;
   border-radius: 4px;
@@ -1565,7 +1565,7 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
     width: 100%; }
   .card.primary {
     border: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     background: #4ca66b;
     color: #fff;
     border-radius: 4px;
@@ -1582,7 +1582,7 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
       padding: 1rem; }
   .card.success {
     border: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     background: #43AC6A;
     color: #fff;
     border-radius: 4px;
@@ -1599,7 +1599,7 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
       padding: 1rem; }
   .card.warning {
     border: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     background: #F08A24;
     color: #fff;
     border-radius: 4px;
@@ -1616,7 +1616,7 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
       padding: 1rem; }
   .card.alert {
     border: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     background: #F04124;
     color: #fff;
     border-radius: 4px;
@@ -1633,7 +1633,7 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
       padding: 1rem; }
   .card.dark {
     border: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     background: #232323;
     color: #fff;
     border-radius: 4px;
@@ -1650,7 +1650,7 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
       padding: 1rem; }
 
 .card-divider {
-  background: #ededed;
+  background: white;
   padding: 1rem; }
 
 .card-section {
@@ -4370,7 +4370,7 @@ meter {
 
 .modal {
   max-width: 600px;
-  border-radius: 0px; }
+  border-radius: 7px; }
   .tiny > .modal {
     max-width: 300px; }
   .small > .modal {

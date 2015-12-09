@@ -11,7 +11,9 @@
       'foundation.dynamicRouting.animations',
       'LocalStorageModule',
       'monospaced.qrcode',
-      'sun.scrollable'
+      'sun.scrollable',
+      'angular-embedly',
+      'ngSanitize'
     ])
       .config(config)
       .run(run)

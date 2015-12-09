@@ -1,0 +1,14 @@
+<div class="tweetModal" scrollable="" ng-controller="tweetModalController" ng-init="init()">
+    <a zf-close="" class="close-button">×</a>
+    <h4 class="tweet_header">{{doc.user_name}}</h4>
+    <p ng-show="doc.lang=='en'" ng-bind-html="doc.text_en | linky"></p>
+    <p ng-show="doc.lang=='de'" ng-bind-html="doc.text_de | linky"></p>
+    <p ng-show="doc.lang=='es'" ng-bind-html="doc.text_es | linky"></p>
+    <image ng-src="{{doc.mediaUrl[0]?doc.mediaUrl[0]:' '}}" class="expand"></image>
+    <h5 ng-show="linkData.length > 0">Links:</h5>
+    <div ng-repeat="data in linkData">
+        <p><a ng-href="{{data.url}}">{{data.title}}</a></p>
+        <p ng-bind-html="data.description | linky"></p>
+        <image ng-src="{{data.image?data.image:' '}}" class="expand"></image>
+    </div>
+</div>
