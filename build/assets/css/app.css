@@ -4390,7 +4390,7 @@ meter {
   left: 0;
   z-index: 1000;
   display: none;
-  background-color: rgba(51, 51, 51, 0.7);
+  background-color: rgba(76, 166, 107, 0.7);
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;

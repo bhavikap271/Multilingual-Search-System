@@ -75,6 +75,21 @@ main.controller('SearchController',['$rootScope','$scope','$http','ModalFactory'
     }
   });
 
+  var loadingModal = new ModalFactory({
+    overlay: true,
+    overlayClose: false,
+    animationOut:"zoomOut",
+    templateUrl: '../../templates/loading.html',
+    contentScope: {
+      close: function() {
+        $timeout(function() {
+          modal.destroy();
+        }, 1000);
+      }
+    }
+  });
+
+
   var loadExtraData = function(){
     var doc = $rootScope.doc;
     $rootScope.linkData = [];
@@ -91,7 +106,9 @@ main.controller('SearchController',['$rootScope','$scope','$http','ModalFactory'
             console.log("Updated link data")
           },
           function(error){
-            console.log("Error in fetching extra information" + error)
+            console.log("Error in fetching extra information" + error);
+            data.title = "Unable to fetch Link Preview";
+            $rootScope.linkData.push(data);
           });
     }
   };
@@ -176,17 +193,20 @@ main.controller('SearchController',['$rootScope','$scope','$http','ModalFactory'
       url = "http://52.35.45.252:8983/solr/bladeTrinity/trinity?q="+$scope.searchInput +"&wt=json&qf=text_en%20text_de%20text_es%20text_hi%20twitter_hashtags%20user_name";
       $location.search({query:$scope.searchInput});
     }
+    loadingModal.activate();
     $http({
       method: 'GET',
       url: url
     }).then(function successCallback(response) {
         constructCategories(response);
+        loadingModal.deactivate();
         constructDocuments(response);
     }, function errorCallback(response) {
       console.log("Error querying solr" + JSON.stringify(response));
+      loadingModal.deactivate();
     });
 
-  }
+  };
 
   if($stateParams.query){
     $scope.searchInput = $stateParams.query;
