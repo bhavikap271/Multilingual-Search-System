@@ -9,7 +9,7 @@
       </ul>
     </div>
     <div class="vertical grid-block">
-        <h7 class="list-header">Categories</h7>
+        <h7 class="list-header">Category Filter</h7>
         <div class="grid-block" style="height: 15vh; overflow-y: hidden;">
           <div class="grid-content">
           <section class="block-list scrollable">
@@ -19,11 +19,12 @@
           </section>
           </div>
         </div>
-        <h7 class="list-header">HashTags</h7>
+        <h7 class="list-header">Related Topics</h7>
         <div class="grid-block" style="height: 15vh; overflow-y: hidden;">
           <div class="grid-content">
           <section class="block-list">
             <ul scrollable>
+              <li ng-repeat="facet in displayFacets"><a ng-click="searchFacets(facet);">{{facet}}</a></li>
             </ul>
           </section>
           </div>
@@ -44,7 +45,7 @@
           </a>
         </li>
         <li class="small-1" zf-open="info">
-          <a href="#">
+          <a ng-click="createChartData()">
             <img zf-iconic="" icon="cog" size="small" class="settings iconic-color-primary">
           </a>
         </li>
@@ -54,7 +55,7 @@
 
       <div class="small-6 medium-6 large-6 grid-content overflow-hidden" ng-repeat="document in documents">
         <div class="card slideLeft" ng-click="show(doc)" ng-repeat="doc in document">
-          <div class="card-divider tweet_header">
+          <div class="card-divider tweet_header_preview">
             {{doc.user_name}}
           </div>
           <div class="card-section">
@@ -63,6 +64,7 @@
             <p ng-show="doc.lang=='es'" ng-bind-html="doc.text_es | linky"></p>
             <p ng-show="doc.lang=='fr'" ng-bind-html="doc.text_fr | linky"></p>
             <p ng-show="doc.lang=='hi'" ng-bind-html="doc.text_hi | linky"></p>
+            <span ng-repeat="tags in doc.content_tag| limitTo:3" class="label label-tag" ng-click="searchTag($event,tags)">{{tags}}</span>
           </div>
         </div>
       </div>
@@ -70,7 +72,15 @@
   </div>
 
   <div zf-panel position="right" id="info" class="collapse medium-3 large-3 vertical">
-    <a href="" class="close-button" zf-close>×</a>
+    <div class="grid-content">
+      <a href="" class="close-button" zf-close>×</a>
+      <h4>Graphical Data</h4>
+      <h5>Language distribution</h5>
+      <canvas id="line" class="chart chart-line" chart-data="data"
+              chart-labels="labels" chart-legend="true" chart-series="series"
+              chart-click="onClick" >
+      </canvas>
+    </div>
   </div>
 </div>
 

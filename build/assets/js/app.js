@@ -13,7 +13,8 @@
       'monospaced.qrcode',
       'sun.scrollable',
       'angular-embedly',
-      'ngSanitize'
+      'ngSanitize',
+      'chart.js'
     ])
       .config(config)
       .run(run)
@@ -222,6 +223,103 @@ main.controller('SearchController',['$rootScope','$scope','$http','ModalFactory'
     }
   }
 
+  function getFirstWord(line) {
+    var words = line.split(" ");
+    if(words[0]){
+      if(words[0].charAt(0)=="!"){
+        return words[0];
+      }
+      else{
+        return;
+      }
+    }
+  }
+
+  function getRemainingWords(line){
+    var words = line.split(" ");
+    var wordToReturn = "";
+    for(var word in words){
+      if(word!=0){
+        wordToReturn += words[word] + " ";
+      }
+    }
+    return wordToReturn;
+  }
+
+  $scope.createChartData =function(){
+    if($scope.allDocuments.length == 0){
+      return;
+    }
+    $scope.labels = ["English", "Hindi", "Spanish", "French", "German"];
+    $scope.series = ['Languages'];
+
+    var languages = {
+      english:0,
+      spanish:0,
+      german:0,
+      french:0,
+      hindi:0
+    };
+
+    for(var doc in $scope.allDocuments){
+      switch ($scope.allDocuments[doc].lang){
+        case "en":
+              languages.english++;
+              break;
+        case "de":
+          languages.german++;
+          break;
+        case "fr":
+          languages.french++;
+          break;
+        case "hi":
+          languages.hindi++;
+          break;
+        case "es":
+          languages.spanish++;
+          break;
+      }
+
+    }
+    $scope.data = [
+      [languages.english, languages.hindi , languages.spanish, languages.french, languages.german]
+    ];
+    $scope.onClick = function (points, evt) {
+      console.log(points, evt);
+    };
+  };
+
+
+  $scope.searchFacets = function(query){
+    $scope.searchInput = "!tag " + query;
+    $scope.search();
+  };
+
+  function constructFacets(response) {
+    var facets = response.data.facet_counts.facet_fields;
+    var max = 0;
+    var facetToUse;
+    for(var facet in facets){
+      if(facets[facet][1] > max) {
+        max = facets[facet][1];
+        facetToUse = facets[facet];
+      }
+    }
+    $scope.displayFacets = [];
+    for(var i=0;i<12;i+=2){
+      if(!isNaN(facetToUse[i])){
+        continue;
+      }
+      $scope.displayFacets.push(facetToUse[i]);
+    }
+  }
+
+  $scope.searchTag =function($event,tags){
+    $event.stopPropagation();
+    $scope.searchInput = "!tag " + tags;
+    $scope.search();
+  };
+
   $scope.search = function(){
     var url;
     console.log("current location " + $location.path());
@@ -231,7 +329,28 @@ main.controller('SearchController',['$rootScope','$scope','$http','ModalFactory'
       return;
     }
     else {
-      url = "http://52.35.45.252:8983/solr/bladeTrinity/trinity?q="+$scope.searchInput +"&wt=json&qf=text_en%20text_de%20text_es%20text_hi%20twitter_hashtags%20user_name";
+      var searchInputString = $scope.searchInput;
+      var firstWord = getFirstWord(searchInputString);
+      if(firstWord){
+        switch (firstWord){
+          case "!hashtag":
+                searchInputString = getRemainingWords(searchInputString);
+                replacedString = searchInputString;
+                if(searchInputString.charAt(0) == '#'){
+                  var re = new RegExp("#", 'g');
+                  var replacedString = searchInputString.replace(re,"");
+                }
+                url = "http://52.35.45.252:8983/solr/bladeTrinity/trinity?q=" + replacedString.trim() + "&wt=json&qf=twitter_hashtags";
+                break;
+          case "!tag":
+              searchInputString = getRemainingWords(searchInputString);
+              replacedString = searchInputString;
+              url = "http://52.35.45.252:8983/solr/bladeTrinity/trinity?q=" + replacedString.trim() + "&wt=json&qf=content_tag";
+              break;
+        }
+      }else {
+        url = "http://52.35.45.252:8983/solr/bladeTrinity/trinity?q=" + $scope.searchInput + "&wt=json&qf=text_en%20text_de%20text_es%20text_hi%20twitter_hashtags%20user_name";
+      }
       $location.search({query:$scope.searchInput});
     }
     loadingModal.activate();
@@ -241,6 +360,7 @@ main.controller('SearchController',['$rootScope','$scope','$http','ModalFactory'
     }).then(function successCallback(response) {
         constructCategories(response);
         loadingModal.deactivate();
+        constructFacets(response);
         constructDocuments(response);
     }, function errorCallback(response) {
       console.log("Error querying solr" + JSON.stringify(response));

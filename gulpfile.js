@@ -36,6 +36,7 @@ var paths = {
     'bower_components/tether/tether.js',
     'bower_components/hammerjs/hammer.js',
     'bower_components/jquery/dist/jquery.js',
+    'bower_components/Chart.js/Chart.js',
     'bower_components/angular/angular.js',
     'bower_components/angular-animate/angular-animate.js',
     'bower_components/angular-ui-router/release/angular-ui-router.js',
@@ -50,7 +51,8 @@ var paths = {
     'bower_components/angular-nanoscroller/scrollable.js',
     'bower_components/angular-sanitize/angular-sanitize.js',
     'bower_components/angular-emoji-popup/emoji.min.js',
-    'bower_components/angular-embedly/angular-embedly.js'
+    'bower_components/angular-embedly/angular-embedly.js',
+    'bower_components/angular-chart.js/dist/angular-chart.js'
   ],
   // These files are for your app's JavaScript
   appJS: [

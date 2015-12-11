@@ -3640,27 +3640,27 @@ meter {
   font-size: 0.8rem;
   padding: 0.33333rem 0.5rem;
   background: #4ca66b;
-  border-radius: 0;
+  border-radius: 5px;
   color: #fff; }
   .label.primary {
     background: #4ca66b;
-    border-radius: 0;
+    border-radius: 5px;
     color: #fff; }
   .label.success {
     background: #43AC6A;
-    border-radius: 0;
+    border-radius: 5px;
     color: #fff; }
   .label.warning {
     background: #F08A24;
-    border-radius: 0;
+    border-radius: 5px;
     color: #fff; }
   .label.alert {
     background: #F04124;
-    border-radius: 0;
+    border-radius: 5px;
     color: #fff; }
   .label.dark {
     background: #232323;
-    border-radius: 0;
+    border-radius: 5px;
     color: #fff; }
 
 /*
@@ -4390,7 +4390,7 @@ meter {
   left: 0;
   z-index: 1000;
   display: none;
-  background-color: rgba(76, 166, 107, 0.7);
+  background-color: rgba(137, 153, 146, 0.7);
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;

@@ -13,7 +13,8 @@
       'monospaced.qrcode',
       'sun.scrollable',
       'angular-embedly',
-      'ngSanitize'
+      'ngSanitize',
+      'chart.js'
     ])
       .config(config)
       .run(run)
