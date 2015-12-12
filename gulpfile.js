@@ -29,7 +29,7 @@ var paths = {
     'client/assets/scss',
     'bower_components/foundation-apps/scss'
   ],
-  // These files include Foundation for Apps and its dependencies
+  // These files include Foundation for Apps and its dependencies Bhavika add the nlp refernce here, and then use it as the site says
   foundationJS: [
     'bower_components/fastclick/lib/fastclick.js',
     'bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js',
