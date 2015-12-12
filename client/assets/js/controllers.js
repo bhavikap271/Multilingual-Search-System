@@ -8,55 +8,27 @@ main.config(function(embedlyServiceProvider){
 });
 
 main.controller('LoginController',['$rootScope','$scope','localStorageService','peer','$state',function($rootScope,$scope,localStorageService,peer,$state){
-  if(typeof(peer) === "string"){
-    $scope.peerId = peer;
-    var thisPeer = new Peer(peer,{key:'ytgklpf684u0udi'});
-    $rootScope.thisPeer = thisPeer;
-  }
-  else {
-    $rootScope.$on('open', function (sender,peer) {
-      generateQRCode(peer.id);
-      $rootScope.thisPeer = peer;
-    })
-  }
-  function generateQRCode(peerId){
-    $scope.$apply(function(){
-      $scope.peerId = peerId;
-    });
-  }
-  $scope.searchInput = "";
+
   $scope.search = function(){
       if($scope.searchInput.trim() == ""){
         return;
       }
       $state.go('search',{'query':$scope.searchInput});
-  }
-
-  $rootScope.thisPeer.on('connection',function(conn){
-    conn.on('open',function(){
-      $rootScope.connected = true;
-      $rootScope.dataConnection = conn;
-    });
-  });
-
-  $rootScope.$on('$stateChangeSuccess',
-    function(event, toState, toParams, fromState, fromParams){
-      console.log('state change success');
-    });
-
-  $rootScope.$on('$stateChangeError',
-    function(event, toState, toParams, fromState, fromParams){
-      console.log('state change error');
-    });
+  };
 
 }]);
 
-main.controller('SearchController',['$rootScope','$scope','$http','ModalFactory','embedlyService','$stateParams','$location',function($rootScope,$scope,$http,ModalFactory,embedlyService,$stateParams,$location){
+//Bhavika i have laready injected the wiki service, just use it in the code, when you search
+main.controller('SearchController',['$rootScope','$scope','$http','ModalFactory','embedlyService','$stateParams','$location','wikiService',function($rootScope,$scope,$http,ModalFactory,embedlyService,$stateParams,$location,wikiService){
   var tweets = $("#tweets");
   tweets.mousewheel(function(event){
       tweets[0].scrollLeft -= (event.deltaY * 30);
       event.preventDefault();
   });
+
+
+  //Bhavika.. set thhis to true, whenever you wanna show the wiki;
+  $scope.showWiki = false;
 
   var modal = new ModalFactory({
     overlay: true,
@@ -278,6 +250,8 @@ main.controller('SearchController',['$rootScope','$scope','$http','ModalFactory'
     $scope.search();
   };
 
+
+  //Bhavika this function is called when something is searched
   $scope.search = function(){
     var url;
     console.log("current location " + $location.path());

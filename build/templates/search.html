@@ -52,7 +52,17 @@
       </ul>
     </div>
     <div id="tweets" class="grid-block scroll-section">
-
+      <!-- Bhavika.. the div below hods the wikipedia content. Use the  {{}} style to show the variables from the controller-->
+      <div class="small-6 medium-6 large-6 grid-content overflow-hidden" ng-show="showWiki">
+        <div class="card slideLeft" >
+          <div class="card-divider tweet_header_preview">
+            Wikipedia page
+          </div>
+          <div class="card-section">
+            <p>Wiki Content</p>
+          </div>
+        </div>
+      </div>
       <div class="small-6 medium-6 large-6 grid-content overflow-hidden" ng-repeat="document in documents">
         <div class="card slideLeft" ng-click="show(doc)" ng-repeat="doc in document">
           <div class="card-divider tweet_header_preview">

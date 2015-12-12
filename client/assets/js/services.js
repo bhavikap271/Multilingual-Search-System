@@ -18,3 +18,16 @@ main.factory('peer',function(localStorageService,$rootScope){
     return peerId;
   }
 });
+
+
+//Bhavika.. i have added the service.. modify this as apprporiately
+main.factory('wikiService', function($http) {
+
+  var wikiService = {
+    get: function(country) {
+      return $http.jsonp('http://es.wikipedia.org/w/api.php?titles=' + country.name.toLowerCase() + '&rawcontinue=true&action=query&format=json&prop=extracts&callback=JSON_CALLBACK');
+    }
+  };
+
+  return wikiService;
+});
