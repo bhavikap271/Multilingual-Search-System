@@ -1,3 +1,4 @@
+
 # Foundation for Apps Template
 
 [![devDependency Status](https://david-dm.org/zurb/foundation-apps-template/dev-status.svg)](https://david-dm.org/zurb/foundation-apps-template#info=devDependencies)
@@ -50,3 +51,5 @@ To run the compiling process once, without watching any files, use the `build` c
 ```bash
 npm start build
 ```
+
+<b>Backend Search System is based on Solr. Configure Apache Solr and replace schema.xml and solrconfig.xml in Solr with the files available in Solr Cofiguration folder<b>
