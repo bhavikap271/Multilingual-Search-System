@@ -1,3 +1,6 @@
+<b>Backend Search System is based on Solr. Configure Apache Solr and replace schema.xml and solrconfig.xml in Solr with the files available in Solr Cofiguration folder<b><br>
+
+
 
 # Foundation for Apps Template
 
@@ -52,4 +55,3 @@ To run the compiling process once, without watching any files, use the `build` c
 npm start build
 ```
 
-<b>Backend Search System is based on Solr. Configure Apache Solr and replace schema.xml and solrconfig.xml in Solr with the files available in Solr Cofiguration folder<b>
